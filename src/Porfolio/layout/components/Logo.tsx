@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import { Camera } from "lucide-react";
+import { Link } from "react-router";
 
 export const Logo = () => {
   return (
@@ -11,15 +12,12 @@ export const Logo = () => {
       animate={{ opacity: 1, x: 0 }}
       transition={{ duration: 0.5 }}
     >
-      <motion.a
-        href="#"
-        className="flex items-center"
-        whileHover={{ scale: 1.05 }}
-        whileTap={{ scale: 0.95 }}
-      >
-        <Camera className="h-8 w-8 text-purple-400" />
-        <span className="ml-2 text-xl font-bold text-white">Omgrapher</span>
-      </motion.a>
+      <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+        <Link to="/" className="flex items-center">
+          <Camera className="h-8 w-8 text-purple-400" />
+          <span className="ml-2 text-xl font-bold text-white">Omgrapher</span>
+        </Link>
+      </motion.div>
     </motion.div>
   );
 };

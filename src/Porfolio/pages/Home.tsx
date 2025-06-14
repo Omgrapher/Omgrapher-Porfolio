@@ -94,7 +94,7 @@ export const Home = (): JSX.Element => {
           >
             <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
               <Link
-                to="/portfolio"
+                to="/gallery"
                 className="inline-flex items-center bg-purple-600 hover:bg-purple-700 text-white font-medium py-3 px-8 rounded-md transition-colors duration-300 shadow-lg hover:shadow-xl"
               >
                 Ver Galería

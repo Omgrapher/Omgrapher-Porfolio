@@ -9,14 +9,6 @@ interface ContactInfo {
   content: string | JSX.Element;
   href?: string;
 }
-
-interface ServicePackage {
-  name: string;
-  price: string;
-  duration: string;
-  features: string[];
-}
-
 export const Contact = (): JSX.Element => {
   const containerVariants: Variants = {
     hidden: { opacity: 0 },
@@ -74,45 +66,6 @@ export const Contact = (): JSX.Element => {
     },
   ];
 
-  const packages: ServicePackage[] = [
-    {
-      name: "Sesión Básica",
-      price: "Q299",
-      duration: "1 hora",
-      features: [
-        "20 fotos editadas",
-        "Galería online",
-        "Resolución alta",
-        "Soporte por email",
-      ],
-    },
-    {
-      name: "Sesión Premium",
-      price: "Q499",
-      duration: "2 horas",
-      features: [
-        "50 fotos editadas",
-        "Galería online",
-        "Resolución alta",
-        "USB con todas las fotos",
-        "Impresiones 8x10",
-      ],
-    },
-    {
-      name: "Sesión Completa",
-      price: "Q799",
-      duration: "3 horas",
-      features: [
-        "100 fotos editadas",
-        "Galería online",
-        "Resolución alta",
-        "USB con todas las fotos",
-        "Álbum premium",
-        "Sesión de maquillaje",
-      ],
-    },
-  ];
-
   return (
     <motion.div
       initial={{ opacity: 0 }}
@@ -141,74 +94,6 @@ export const Contact = (): JSX.Element => {
             ¿Listo para capturar momentos únicos? Hablemos sobre tu próxima
             sesión fotográfica.
           </motion.p>
-        </div>
-      </section>
-
-      {/* Packages Section */}
-      <section className="py-20 bg-gray-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div
-            className="text-center mb-16"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.7 }}
-          >
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-              Paquetes de Sesión
-            </h2>
-            <div className="w-24 h-1 bg-purple-600 mx-auto"></div>
-            <p className="mt-6 text-lg text-gray-600 max-w-2xl mx-auto">
-              Elige el paquete que mejor se adapte a tus necesidades y
-              presupuesto.
-            </p>
-          </motion.div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {packages.map((pkg: ServicePackage, index: number) => (
-              <motion.div
-                key={pkg.name}
-                className="bg-white rounded-lg shadow-lg p-8 relative"
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-                whileHover={{
-                  y: -5,
-                  boxShadow: "0 20px 40px -5px rgba(0, 0, 0, 0.1)",
-                }}
-              >
-                {index === 1 && (
-                  <div className="absolute -top-4 left-1/2 transform -translate-x-1/2">
-                    <span className="bg-purple-600 text-white px-4 py-1 rounded-full text-sm font-medium">
-                      Más Popular
-                    </span>
-                  </div>
-                )}
-                <div className="text-center mb-6">
-                  <Camera className="h-12 w-12 text-purple-600 mx-auto mb-4" />
-                  <h3 className="text-xl font-bold text-gray-900 mb-2">
-                    {pkg.name}
-                  </h3>
-                  <div className="text-3xl font-bold text-purple-600 mb-1">
-                    {pkg.price}
-                  </div>
-                  <div className="text-gray-600">{pkg.duration}</div>
-                </div>
-                <ul className="space-y-3 mb-8">
-                  {pkg.features.map((feature: string, featureIndex: number) => (
-                    <li
-                      key={featureIndex}
-                      className="flex items-center text-gray-700"
-                    >
-                      <div className="w-2 h-2 bg-purple-600 rounded-full mr-3"></div>
-                      {feature}
-                    </li>
-                  ))}
-                </ul>
-              </motion.div>
-            ))}
-          </div>
         </div>
       </section>
 

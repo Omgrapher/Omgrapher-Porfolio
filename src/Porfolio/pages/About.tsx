@@ -57,7 +57,6 @@ export const About = (): JSX.Element => {
   const stats: Stat[] = [
     { number: "500+", label: "Sesiones Completadas" },
     { number: "10+", label: "Años de Experiencia" },
-    { number: "50+", label: "Premios Ganados" },
     { number: "100%", label: "Clientes Satisfechos" },
   ];
 

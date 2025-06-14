@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Camera, Award, Users, Clock, Calendar } from "lucide-react";
+import { Camera, Award, Users, Calendar } from "lucide-react";
 import type { JSX } from "react/jsx-runtime";
 
 interface ServiceCard {
@@ -18,7 +18,7 @@ export const Services = (): JSX.Element => {
       icon: Camera,
       title: "Sesión Básica",
       description: "Perfecta para retratos individuales o en pareja",
-      price: "Desde $150",
+      price: "Desde Q150",
       features: [
         "1 hora de sesión",
         "10 fotos editadas",
@@ -30,7 +30,7 @@ export const Services = (): JSX.Element => {
       icon: Users,
       title: "Sesión Familiar",
       description: "Captura momentos especiales con tu familia",
-      price: "Desde $250",
+      price: "Desde Q250",
       features: [
         "2 horas de sesión",
         "20 fotos editadas",
@@ -43,7 +43,7 @@ export const Services = (): JSX.Element => {
       icon: Award,
       title: "Sesión Premium",
       description: "La experiencia fotográfica más completa",
-      price: "Desde $350",
+      price: "Desde Q350",
       features: [
         "3 horas de sesión",
         "30 fotos editadas",
@@ -123,15 +123,6 @@ export const Services = (): JSX.Element => {
                         </li>
                       ))}
                     </ul>
-                  </div>
-                  <div className="px-8 py-4 bg-gray-50 border-t border-gray-100">
-                    <motion.button
-                      whileHover={{ scale: 1.05 }}
-                      whileTap={{ scale: 0.95 }}
-                      className="w-full bg-purple-600 text-white py-2 px-4 rounded-md hover:bg-purple-700 transition-colors"
-                    >
-                      Reservar Ahora
-                    </motion.button>
                   </div>
                 </motion.div>
               );

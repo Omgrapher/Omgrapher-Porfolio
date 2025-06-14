@@ -1,8 +1,10 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { Link } from "react-router";
+import type { JSX } from "react/jsx-runtime";
 
-export const Hero = () => {
+export const Hero = (): JSX.Element => {
   return (
     <section
       id="home"
@@ -46,12 +48,12 @@ export const Hero = () => {
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
         >
-          <a
-            href="#gallery"
+          <Link
+            to="/gallery"
             className="inline-block bg-purple-600 hover:bg-purple-700 text-white font-medium py-3 px-8 rounded-md transition-colors duration-300 shadow-lg hover:shadow-xl"
           >
             Ver Galería
-          </a>
+          </Link>
         </motion.div>
       </div>
     </section>

@@ -2,6 +2,7 @@
 
 import { motion, AnimatePresence, type Variants } from "framer-motion";
 import { Menu, X } from "lucide-react";
+import { Link } from "react-router";
 import { type MenuItem } from "../types/navbar";
 
 interface MobileMenuProps {
@@ -54,17 +55,20 @@ export const MobileMenu = ({
           >
             <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
               {menuItems.map((item, i) => (
-                <motion.a
+                <motion.div
                   key={item.label}
-                  href={item.href}
-                  className="text-white hover:text-purple-300 block px-3 py-2 text-base font-medium"
-                  onClick={() => setIsMenuOpen(false)}
                   custom={i}
                   variants={menuItemVariants}
                   whileHover={{ x: 5 }}
                 >
-                  {item.label}
-                </motion.a>
+                  <Link
+                    to={item.href}
+                    className="text-white hover:text-purple-300 block px-3 py-2 text-base font-medium"
+                    onClick={() => setIsMenuOpen(false)}
+                  >
+                    {item.label}
+                  </Link>
+                </motion.div>
               ))}
             </div>
           </motion.div>
