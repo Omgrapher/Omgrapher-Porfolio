@@ -2,7 +2,8 @@ export interface ImageType {
   id: number;
   src: string;
   alt: string;
-  category: string;
+  category?: string;
+  aspectRatio?: "vertical" | "horizontal" | "square";
 }
 
 export interface GalleryProps {

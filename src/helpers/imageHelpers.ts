@@ -59,10 +59,10 @@ export const createImageConfig = (
 };
 
 /**
- * Función para cargar una imagen local desde la carpeta assets
- * @param path Ruta relativa de la imagen desde la carpeta assets
+ * Función para cargar una imagen local desde la carpeta public/images
+ * @param path Ruta relativa de la imagen desde la carpeta images
  * @returns string
  */
 export const getLocalImagePath = (path: string): string => {
-  return `/src/assets/${path}`;
+  return `/images/${path}`;
 };

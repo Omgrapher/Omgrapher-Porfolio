@@ -1,58 +1,58 @@
 "use client";
 
-import type React from "react";
-import { motion, type Variants } from "framer-motion";
 import { useState } from "react";
-import { Link } from "react-router";
-import type { JSX } from "react/jsx-runtime";
+import { motion, AnimatePresence, type Variants } from "framer-motion";
 import { Image } from "../../components/common/Image";
-import { getLocalImagePath } from "../../helpers/imageHelpers";
 import { ImageModal } from "../components/ImageModal";
 
 interface ImageType {
   id: number;
   src: string;
   alt: string;
+  aspectRatio: "vertical" | "horizontal" | "square";
 }
 
-export const Gallery = (): JSX.Element => {
-  const [selectedImage, setSelectedImage] = useState<ImageType | null>(null);
+interface SelectedImage {
+  src: string;
+  alt: string;
+}
+
+const container: Variants = {
+  hidden: { opacity: 0 },
+  show: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.1,
+    },
+  },
+};
+
+const item: Variants = {
+  hidden: { opacity: 0, y: 20 },
+  show: { opacity: 1, y: 0, transition: { duration: 0.5 } },
+};
+
+export const Gallery = () => {
+  const [selectedImage, setSelectedImage] = useState<SelectedImage | null>(
+    null
+  );
 
   // Generar el array de imágenes usando las Cards
-  const generateGalleryImages = (): ImageType[] => {
-    const images: ImageType[] = [];
-
-    for (let i = 1; i <= 51; i++) {
-      const imageNumber = i.toString();
-      images.push({
-        id: i,
-        src: getLocalImagePath(`images/Card${imageNumber}.webp`),
-        alt: `Fotografía ${imageNumber}`,
-      });
-    }
-
-    return images;
-  };
-
-  const images = generateGalleryImages();
-
-  const container: Variants = {
-    hidden: { opacity: 0 },
-    show: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.1,
-      },
-    },
-  };
-
-  const item: Variants = {
-    hidden: { opacity: 0, y: 20 },
-    show: { opacity: 1, y: 0, transition: { duration: 0.5 } },
-  };
+  const galleryImages: ImageType[] = Array.from({ length: 51 }, (_, i) => {
+    const imageNumber = i + 1;
+    return {
+      id: imageNumber,
+      src: `/images/Card${imageNumber}.webp`,
+      alt: `Fotografía ${imageNumber}`,
+      aspectRatio: "vertical",
+    };
+  });
 
   const handleImageClick = (image: ImageType) => {
-    setSelectedImage(image);
+    setSelectedImage({
+      src: image.src,
+      alt: image.alt,
+    });
   };
 
   const handleCloseModal = () => {
@@ -60,54 +60,32 @@ export const Gallery = (): JSX.Element => {
   };
 
   return (
-    <section className="py-20 bg-white">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Images Grid */}
-        <motion.div
-          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4"
-          variants={container}
-          initial="hidden"
-          animate="show"
-        >
-          {images.map((image: ImageType) => (
-            <motion.div
-              key={image.id}
-              variants={item}
-              layout
-              className="w-full"
-            >
-              <div
-                onClick={() => handleImageClick(image)}
-                className="cursor-pointer"
-              >
-                <motion.div
-                  className="group relative overflow-hidden rounded-lg shadow-lg"
-                  whileHover={{ scale: 1.03 }}
-                  whileTap={{ scale: 0.97 }}
-                >
-                  <div
-                    className="relative w-full"
-                    style={{ paddingBottom: "100%" }}
-                  >
-                    <Image
-                      src={image.src}
-                      alt={image.alt}
-                      className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
-                      fallbackSrc={getLocalImagePath("fallback.svg")}
-                      loading="lazy"
-                      style={{
-                        objectFit: "cover",
-                        objectPosition: "center",
-                      }}
-                    />
-                  </div>
-                </motion.div>
-              </div>
-            </motion.div>
-          ))}
-        </motion.div>
+    <section className="container mx-auto px-4 py-12">
+      <motion.div
+        className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4"
+        variants={container}
+        initial="hidden"
+        animate="show"
+      >
+        {galleryImages.map((image) => (
+          <motion.div
+            key={image.id}
+            variants={item}
+            className="relative aspect-square overflow-hidden rounded-lg cursor-pointer"
+            whileHover={{ scale: 1.02 }}
+            whileTap={{ scale: 0.98 }}
+            onClick={() => handleImageClick(image)}
+          >
+            <Image
+              src={image.src}
+              alt={image.alt}
+              className="w-full h-full object-cover transition-transform duration-500 hover:scale-110"
+            />
+          </motion.div>
+        ))}
+      </motion.div>
 
-        {/* Modal */}
+      <AnimatePresence>
         {selectedImage && (
           <ImageModal
             isOpen={!!selectedImage}
@@ -116,7 +94,7 @@ export const Gallery = (): JSX.Element => {
             imageAlt={selectedImage.alt}
           />
         )}
-      </div>
+      </AnimatePresence>
     </section>
   );
 };

@@ -1,5 +1,5 @@
 import { motion, type Variants } from "framer-motion";
-import { Mail, Phone, MapPin, Clock, Camera } from "lucide-react";
+import { Mail, Phone, MapPin, Clock } from "lucide-react";
 import type React from "react";
 import type { JSX } from "react/jsx-runtime";
 
@@ -115,7 +115,7 @@ export const Contact = (): JSX.Element => {
             </motion.div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              {contactInfo.map((info: ContactInfo, index: number) => {
+              {contactInfo.map((info: ContactInfo) => {
                 const IconComponent = info.icon;
                 return (
                   <motion.div

@@ -1,15 +1,7 @@
 import type React from "react";
 
 import { motion, type Variants } from "framer-motion";
-import {
-  Camera,
-  Award,
-  Users,
-  Heart,
-  MapPin,
-  Calendar,
-  Star,
-} from "lucide-react";
+import { Camera, Award, Users, Heart, MapPin, Calendar } from "lucide-react";
 import type { JSX } from "react/jsx-runtime";
 import { Image } from "../../components/common/Image";
 import { getLocalImagePath } from "../../helpers/imageHelpers";

@@ -1,5 +1,6 @@
 import { motion, type Variants } from "framer-motion";
 import { Camera, Award, Users, Heart } from "lucide-react";
+import { getLocalImagePath } from "../../helpers/imageHelpers";
 
 interface FeatureItem {
   icon: React.ComponentType<{ className?: string }>;
@@ -56,9 +57,10 @@ export const About = () => {
                 transition={{ duration: 0.5 }}
               >
                 <img
-                  src="/placeholder.svg?height=800&width=600"
-                  alt="Photographer"
+                  src={getLocalImagePath("Aboutme.webp")}
+                  alt="Fotógrafo profesional"
                   className="w-full h-full object-cover"
+                  loading="lazy"
                 />
               </motion.div>
               <motion.div

@@ -1,6 +1,6 @@
 import React from "react";
 import type { ImageConfig } from "../../helpers/imageHelpers";
-import { createImageConfig, isValidImageUrl } from "../../helpers/imageHelpers";
+import { createImageConfig } from "../../helpers/imageHelpers";
 
 interface ImageProps extends Partial<ImageConfig> {
   fallbackSrc?: string;

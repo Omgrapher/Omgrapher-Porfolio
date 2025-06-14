@@ -17,7 +17,7 @@ export const Hero = (): JSX.Element => {
         transition={{ duration: 10, ease: "easeOut" }}
         className="absolute inset-0 bg-cover bg-center"
         style={{
-          backgroundImage: "url('/placeholder.svg?height=1080&width=1920')",
+          backgroundImage: "url('/images/Showcase.jpg')",
         }}
       ></motion.div>
 
