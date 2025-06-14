@@ -1,6 +1,4 @@
-import { type MenuItem } from "../components/types/navbar";
-
-export const menuItems: MenuItem[] = [
+export const menuItems = [
   {
     label: "Inicio",
     href: "/",
