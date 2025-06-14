@@ -11,6 +11,8 @@ import {
   Star,
 } from "lucide-react";
 import type { JSX } from "react/jsx-runtime";
+import { Image } from "../../components/common/Image";
+import { getLocalImagePath } from "../../helpers/imageHelpers";
 
 interface FeatureItem {
   icon: React.ComponentType<{ className?: string }>;
@@ -109,10 +111,11 @@ export const About = (): JSX.Element => {
                   whileHover={{ scale: 1.03 }}
                   transition={{ duration: 0.5 }}
                 >
-                  <img
-                    src="/placeholder.svg?height=800&width=600"
-                    alt="Photographer"
+                  <Image
+                    src={getLocalImagePath("images/Aboutme.webp")}
+                    alt="Fotógrafo profesional"
                     className="w-full h-full object-cover"
+                    fallbackSrc={getLocalImagePath("fallback.svg")}
                   />
                 </motion.div>
                 <motion.div

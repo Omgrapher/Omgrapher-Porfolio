@@ -6,7 +6,7 @@ import { Navbar } from "../layout/Navbar";
 import { Footer } from "../layout/Footer";
 import type { JSX } from "react/jsx-runtime";
 
-const Layout = (): JSX.Element => {
+export const Layout = (): JSX.Element => {
   const location = useLocation();
 
   return (
@@ -21,5 +21,3 @@ const Layout = (): JSX.Element => {
     </div>
   );
 };
-
-export default Layout;

@@ -6,6 +6,8 @@ import { motion } from "framer-motion";
 import { Link } from "react-router";
 import { ArrowRight, Camera, Award, Users } from "lucide-react";
 import type { JSX } from "react/jsx-runtime";
+import { Image } from "../../components/common/Image";
+import { getLocalImagePath } from "../../helpers/imageHelpers";
 
 interface FeatureCard {
   icon: React.ComponentType<{ className?: string }>;
@@ -43,19 +45,28 @@ export const Home = (): JSX.Element => {
       transition={{ duration: 0.5 }}
     >
       {/* Hero Section */}
-      <section className="relative h-screen flex items-center justify-center overflow-hidden">
+      <section className="relative h-screen w-full flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/50 to-black/70 z-10"></div>
         <motion.div
           initial={{ scale: 1.1 }}
           animate={{ scale: 1 }}
           transition={{ duration: 10, ease: "easeOut" }}
-          className="absolute inset-0 bg-cover bg-center"
-          style={{
-            backgroundImage: "url('/placeholder.svg?height=1080&width=1920')",
-          }}
-        ></motion.div>
+          className="absolute inset-0 w-full h-full"
+        >
+          <Image
+            src={getLocalImagePath("images/Showcase.jpg")}
+            alt="Showcase de fotografía profesional"
+            className="absolute inset-0 w-full h-full object-cover object-center"
+            style={{
+              minHeight: "100vh",
+              width: "100%",
+              objectPosition: "center center",
+            }}
+            fallbackSrc={getLocalImagePath("fallback.svg")}
+          />
+        </motion.div>
 
-        <div className="relative z-20 text-center px-4 sm:px-6 lg:px-8 max-w-4xl">
+        <div className="relative z-20 text-center px-4 sm:px-6 lg:px-8 max-w-4xl mx-auto">
           <motion.h1
             initial={{ y: 30, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}

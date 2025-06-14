@@ -2,10 +2,11 @@ import { createBrowserRouter } from "react-router";
 import { App } from "./App";
 import { Home } from "./Porfolio/pages/Home";
 import { Gallery } from "./Porfolio/pages/Gallery";
-import { ImageDetail } from "./Porfolio/pages/ImageDetail";
+import { Services } from "./Porfolio/pages/Services";
 import { About } from "./Porfolio/pages/About";
 import { Contact } from "./Porfolio/pages/Contact";
 import { NotFound } from "./Porfolio/pages/NotFound";
+import { ImageDetail } from "./Porfolio/pages/ImageDetail";
 
 export const router = createBrowserRouter([
   {
@@ -17,12 +18,16 @@ export const router = createBrowserRouter([
         element: <Home />,
       },
       {
-        path: "portfolio",
+        path: "gallery",
         element: <Gallery />,
       },
       {
-        path: "services",
+        path: "gallery/:id",
         element: <ImageDetail />,
+      },
+      {
+        path: "services",
+        element: <Services />,
       },
       {
         path: "about",
